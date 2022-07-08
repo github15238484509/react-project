@@ -1,19 +1,18 @@
 import { Button } from "antd"
 import { Link } from "umi"
+let usersFilter = ["/users/login", "/users/forgetPassword"]
+
 function index(props: any) {
-    console.log(props);
+    // console.log(props);
+    let path = props.location.pathname.toLocaleLowerCase()
+    // console.log(path);
+    if (usersFilter.includes(path)) {
+        return props.children
+    }
     return (
-        <>
-            <div>全局页面</div>
+        <>456
             {props.children}
             <br />
-            <Button type="default" onClick={() => {
-                props.history.push("/user/13")
-            }}>跳转到user详情</Button>
-            <Button type="ghost" onClick={() => {
-                props.history.push("/")
-            }}>首页</Button>
-            <Link to={"/user"}>跳转到user</Link>
         </>
     )
 }
